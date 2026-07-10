@@ -76,7 +76,27 @@
 
   function buildPalette() {
     paletteEl.innerHTML = "";
+    
+    // Count occurrences of each symbol on the board
+    const symbolCounts = {};
     for (let n = 1; n <= symbolCount; n++) {
+      symbolCounts[n] = 0;
+    }
+    for (let r = 0; r < size; r++) {
+      for (let c = 0; c < size; c++) {
+        const val = playerGrid[r][c];
+        if (val && symbolCounts[val] !== undefined) {
+          symbolCounts[val]++;
+        }
+      }
+    }
+
+    // Render buttons for symbols that aren't completed yet
+    for (let n = 1; n <= symbolCount; n++) {
+      if (symbolCounts[n] >= size) {
+        continue; // Skip rendering this button if all are placed
+      }
+
       const btn = document.createElement("button");
       btn.className = "palette-btn";
       btn.innerHTML = symbolIcon(n);
@@ -84,6 +104,7 @@
       btn.addEventListener("click", () => placeValue(n));
       paletteEl.appendChild(btn);
     }
+
     const erase = document.createElement("button");
     erase.className = "palette-btn erase";
     erase.textContent = "✕";
@@ -130,6 +151,7 @@
       setTimeout(() => cellEl.classList.remove("conflict"), 500);
     }
 
+    buildPalette(); // Refresh palette tracking live
     refreshHighlights();
     checkWin();
   }
@@ -168,7 +190,6 @@
 
   function giveHint() {
     if (solved) return;
-    // find a random empty or incorrect cell and fill it correctly
     const candidates = [];
     for (let r = 0; r < size; r++) {
       for (let c = 0; c < size; c++) {
@@ -183,6 +204,7 @@
     const cellEl = gridEl.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
     renderCellContent(cellEl, r, c);
     selected = { r, c };
+    buildPalette();
     refreshHighlights();
     checkWin();
   }
@@ -197,12 +219,12 @@
     mistakeEl.textContent = 0;
     selected = null;
     buildGrid();
+    buildPalette();
   }
 
   document.getElementById("hintBtn").addEventListener("click", giveHint);
   document.getElementById("resetBtn").addEventListener("click", resetPuzzle);
 
-  // keyboard support
   document.addEventListener("keydown", (e) => {
     if (!selected) return;
     if (e.key >= "1" && e.key <= String(symbolCount)) {
