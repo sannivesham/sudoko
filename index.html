@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mythology Sudoku</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mythology Sudoku — Sannivesham</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="wrap">
+  <div class="wrap">
 
-<header class="site-header">
+    <!-- Cinematic Branded Hero Section -->
+    <div class="sannivesham-hero">
+      <div class="hero-logo-wrapper">
+        <!-- Graphic emblem frame mapping to your logo concept -->
+        <div class="hero-emblem">
+          <svg viewBox="0 0 100 100" class="emblem-svg">
+            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1"/>
+            <!-- Stylized sacred hamsa/swan swan silhouette placeholder -->
+            <path d="M35 60 C35 40, 45 30, 55 35 C65 40, 68 55, 50 65 C42 60, 38 62, 35 60 Z" fill="currentColor" opacity="0.85"/>
+            <path d="M55 35 C62 28, 68 32, 65 40 C60 48, 52 52, 50 65" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+      
+      <h1 class="main-brand-title">సన్నివేశం</h1>
+      <p class="main-brand-tagline">సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
+    </div>
 
-<div>
-<h1>Mythology Sudoku</h1>
-<p class="subtitle">
-Solve the grid. Uncover the epics.
-</p>
-</div>
+    <!-- Elegant Section Separator -->
+    <header class="site-header">
+      <div>
+        <h2>Mythology Sudoku</h2>
+        <p class="subtitle">Solve the grid. Uncover the epics.</p>
+      </div>
+      <a class="back-link" href="../index.html">&larr; Back to main site</a>
+    </header>
 
-<a class="back-link" href="../index.html">
-&larr; Back to main site
-</a>
+    <!-- Dynamic Level Grid Content -->
+    <div id="levelGrid" class="level-grid"></div>
 
-</header>
+  </div>
 
-<div id="levelGrid" class="level-grid"></div>
-
-</div>
-
-<script src="levels.js"></script>
-<script src="progress.js"></script>
-<script src="level-select.js"></script>
-
+  <script src="levels.js"></script>
+  <script src="progress.js"></script>
+  <script src="level-select.js"></script>
 </body>
 </html>
