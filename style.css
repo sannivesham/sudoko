@@ -64,17 +64,19 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold);
+  overflow: hidden; /* Keeps the logo image cleanly bound to the circle */
   transition: transform 0.3s ease;
 }
 
 .hero-emblem:hover {
-  transform: rotate(5deg) scale(1.02);
+  transform: scale(1.02);
 }
 
-.emblem-svg {
-  width: 85%;
-  height: 85%;
+.emblem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Centers and uniformly fills the container */
+  display: block;
 }
 
 .main-brand-title {
@@ -368,4 +370,5 @@ a { color: inherit; }
   .palette-btn { width: 46px; height: 46px; }
   .board-frame { padding: 8px; }
   .sannivesham-hero { padding: 12px 0 20px; }
+  .hero-emblem { width: 110px; height: 110px; } /* Clean layout adjustments for mobile */
 }
