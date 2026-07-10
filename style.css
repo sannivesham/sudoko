@@ -211,7 +211,6 @@ a { color: inherit; }
 .cell.given .symbol-icon { color: #4a3a1f; }
 .cell.conflict .symbol-icon { color: var(--sindoor); }
 
-/* thicker box borders — set inline per grid size via JS using data attrs */
 .cell.box-edge-right { border-right: 2px solid var(--ink); }
 .cell.box-edge-bottom { border-bottom: 2px solid var(--ink); }
 
@@ -240,7 +239,11 @@ a { color: inherit; }
 .palette-btn:hover { transform: scale(1.08); background: var(--teal); }
 .palette-btn.erase { color: var(--sindoor); font-family: 'Cinzel', serif; font-size: 0.8rem; }
 
-.palette-btn .symbol-icon { width: 60%; height: 60%; }
+/* Increased symbol size in the bottom palette buttons */
+.palette-btn .symbol-icon {
+  width: 78%;
+  height: 78%;
+}
 
 .controls-row {
   display: flex;
