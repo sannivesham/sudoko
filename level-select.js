@@ -1,18 +1,17 @@
 (function () {
-  // 1. Level Data expanded to all 12 levels matching the game script matrix
   const MODULE_LEVELS = [
     { id: 1, titleTelugu: "అయోధ్య ద్వారం", titleEnglish: "Ayodhya's Gate", size: 4, difficulty: "Easy" },
-    { id: 2, titleTelugu: "పంచవటి వనం", titleEnglish: "Panchavati Grove", size: 4, difficulty: "Medium" },
-    { id: 3, titleTelugu: "చిత్రకూట ఆశ్రమం", titleEnglish: "Chitrakoot Hermitage", size: 4, difficulty: "Hard" },
+    { id: 2, titleTelugu: "పంచవటి వనం", titleEnglish: "Panchavati Grove", size: 4, difficulty: "Easy" },
+    { id: 3, titleTelugu: "చిత్రకూట ఆశ్రమం", titleEnglish: "Chitrakoot Hermitage", size: 4, difficulty: "Easy" },
     { id: 4, titleTelugu: "కిష్కింధ సభ", titleEnglish: "Kishkindha Court", size: 4, difficulty: "Easy" },
-    { id: 5, titleTelugu: "లంకా ప్రాకారం", titleEnglish: "Lanka's Ramparts", size: 4, difficulty: "Medium" },
-    { id: 6, titleTelugu: "అశోక వనం", titleEnglish: "Ashoka Vatika", size: 4, difficulty: "Hard" },
-    { id: 7, titleTelugu: "శబరి కుటీరం", titleEnglish: "Sabari's Cottage", size: 4, difficulty: "Easy" },
-    { id: 8, titleTelugu: "ఋశ్యమూక పర్వతం", titleEnglish: "Rishyamuka Hill", size: 4, difficulty: "Medium" },
-    { id: 9, titleTelugu: "దండకారణ్యం", titleEnglish: "Dandaka Forest", size: 4, difficulty: "Hard" },
-    { id: 10, titleTelugu: "మిథిలా నగరం", titleEnglish: "Mithila Kingdom", size: 4, difficulty: "Easy" },
-    { id: 11, titleTelugu: "క్షీర సాగరం", titleEnglish: "Cosmic Ocean", size: 4, difficulty: "Medium" },
-    { id: 12, titleTelugu: "శ్రీరామ సామ్రాజ్యం", titleEnglish: "Rama's Empire", size: 4, difficulty: "Hard" }
+    { id: 5, titleTelugu: "లంకా ప్రాకారం", titleEnglish: "Lanka's Ramparts", size: 6, difficulty: "Medium" },
+    { id: 6, titleTelugu: "అశోక వనం", titleEnglish: "Ashoka Vatika", size: 6, difficulty: "Medium" },
+    { id: 7, titleTelugu: "శబరి కుటీరం", titleEnglish: "Sabari's Cottage", size: 6, difficulty: "Medium" },
+    { id: 8, titleTelugu: "ఋశ్యమూక పర్వతం", titleEnglish: "Rishyamuka Hill", size: 6, difficulty: "Medium" },
+    { id: 9, titleTelugu: "దండకారణ్యం", titleEnglish: "Dandaka Forest", size: 9, difficulty: "Hard" },
+    { id: 10, titleTelugu: "మిథిలా నగరం", titleEnglish: "Mithila Kingdom", size: 9, difficulty: "Hard" },
+    { id: 11, titleTelugu: "క్షీర సాగరం", titleEnglish: "Cosmic Ocean", size: 9, difficulty: "Hard" },
+    { id: 12, titleTelugu: "శ్రీరామ సామ్రాజ్యం", titleEnglish: "Rama's Empire", size: 9, difficulty: "Hard" }
   ];
 
   function renderGrid() {
