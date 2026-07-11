@@ -4,21 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>సుడోకు — సన్నివేశం</title>
-  <!-- Link back to your master cascading style sheets to load the custom background -->
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Premium visual overrides keeping level selectors clean */
+    /* Safe container alignment layout rule definitions */
     .game-meta-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      max-width: 900px;
+      align-items: flex-end;
       width: 100%;
-      padding: 0 20px;
-      box-sizing: border-box;
       margin-top: 20px;
-      border-bottom: 1px solid rgba(201, 162, 75, 0.2);
       padding-bottom: 15px;
+      border-bottom: 1px solid rgba(201, 162, 75, 0.2);
     }
     .game-title-section h2 {
       color: var(--gold);
@@ -35,75 +31,40 @@
       text-decoration: none;
       font-size: 1rem;
       transition: color 0.2s;
+      padding-bottom: 4px;
     }
     .back-link:hover {
       color: var(--gold);
-    }
-    .grid-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      width: 100%;
-      padding: 30px 20px;
-      box-sizing: border-box;
-    }
-    .level-card {
-      background: rgba(237, 227, 200, 0.02);
-      border: 1px solid rgba(201, 162, 75, 0.15);
-      border-radius: 8px;
-      padding: 20px;
-      text-decoration: none;
-      color: var(--parchment);
-      position: relative;
-      transition: transform 0.2s, border-color 0.2s;
-      display: block;
-      box-sizing: border-box;
-    }
-    .level-card:not(.locked):hover {
-      transform: translateY(-2px);
-      border-color: var(--gold);
-    }
-    .level-card.locked {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-    .level-number {
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .level-title {
-      font-size: 1.3rem;
-      margin-bottom: 2px;
-    }
-    .level-subtitle {
-      font-size: 0.9rem;
-      color: var(--parchment-dim);
     }
   </style>
 </head>
 <body>
 
-  <!-- Background overlay engine element placeholder -->
   <div class="home-bg"></div>
 
-  <div class="header-container" style="text-align: center; padding: 40px 20px 20px 20px;">
-    <img src="https://sannivesham.com/images/logo.png" class="logo-image" alt="Logo" style="width: 100px; height: 100px; margin-bottom: 15px;">
-    <h1 style="font-size: 2.5rem; margin: 0; font-family: 'Cinzel', serif;">సన్నివేశం</h1>
-    <p style="color: var(--gold); margin: 5px 0 30px 0; letter-spacing: 2px;">సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
-  </div>
-
-  <div class="game-meta-row">
-    <div class="game-title-section">
-      <h2>SANNIVESHAM SUDOKU</h2>
-      <p>Solve the grid. Uncover the epics.</p>
+  <!-- Standard Main Website Centered Container Frame Wrapper Layout -->
+  <div class="main-container" style="max-width: 900px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+    
+    <div class="top-brand" style="text-align: center; margin-bottom: 40px;">
+      <img src="https://sannivesham.com/images/logo.png" class="logo-image" alt="Sannivesham Logo">
+      <div class="brand-text">
+        <h1>సన్నివేశం</h1>
+        <p>సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
+      </div>
     </div>
-    <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
-  </div>
 
-  <div id="levelGrid" class="grid-layout"></div>
+    <div class="game-meta-row">
+      <div class="game-title-section">
+        <h2>SANNIVESHAM SUDOKU</h2>
+        <p>Solve the grid. Uncover the epics.</p>
+      </div>
+      <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
+    </div>
+
+    <!-- Active Target Node Vector Array Grid Block Structure Mapping Element -->
+    <div id="levelGrid" class="level-grid" style="margin-top: 30px;"></div>
+
+  </div>
 
   <script type="module" src="progress.js"></script>
   <script type="module" src="level-select.js"></script>
