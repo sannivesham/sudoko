@@ -3,29 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>సుడోకు — సన్నివేశం</title>
+  <title>సుడోకు — సంస్కృతి • సంప్రదాయం • సంభాషణ</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Safe container alignment layout rule definitions */
+    /* Prevent the brand container from breaking layout rules */
+    .top-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    
+    /* Hard-lock the logo size so it can NEVER blow up */
+    .top-brand .logo-image {
+      width: 90px !important;
+      height: 90px !important;
+      object-fit: contain;
+    }
+
     .game-meta-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       width: 100%;
-      margin-top: 20px;
-      padding-bottom: 15px;
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      padding: 0 20px 15px 20px;
+      box-sizing: border-box;
       border-bottom: 1px solid rgba(201, 162, 75, 0.2);
     }
+
     .game-title-section h2 {
       color: var(--gold);
       font-size: 1.8rem;
       margin: 0;
       font-family: 'Cinzel', serif;
     }
+
     .game-title-section p {
       margin: 5px 0 0 0;
       color: var(--parchment-dim);
     }
+
     .back-link {
       color: #4CB5C9;
       text-decoration: none;
@@ -33,8 +54,16 @@
       transition: color 0.2s;
       padding-bottom: 4px;
     }
+
     .back-link:hover {
       color: var(--gold);
+    }
+
+    .grid-container-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 40px 20px;
+      box-sizing: border-box;
     }
   </style>
 </head>
@@ -42,28 +71,27 @@
 
   <div class="home-bg"></div>
 
-  <!-- Standard Main Website Centered Container Frame Wrapper Layout -->
-  <div class="main-container" style="max-width: 900px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
-    
-    <div class="top-brand" style="text-align: center; margin-bottom: 40px;">
-      <img src="https://sannivesham.com/images/logo.png" class="logo-image" alt="Sannivesham Logo">
-      <div class="brand-text">
-        <h1>సన్నివేశం</h1>
-        <p>సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
-      </div>
+  <!-- Header Section directly matching your main site branding -->
+  <div class="top-brand">
+    <img src="images/logo.png" alt="Sannivesham Logo" class="logo-image">
+    <div class="brand-text">
+      <h1>సన్నివేశం</h1>
+      <p>సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
     </div>
+  </div>
 
-    <div class="game-meta-row">
-      <div class="game-title-section">
-        <h2>SANNIVESHAM SUDOKU</h2>
-        <p>Solve the grid. Uncover the epics.</p>
-      </div>
-      <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
+  <!-- Game Details and Navigation Row -->
+  <div class="game-meta-row">
+    <div class="game-title-section">
+      <h2>SANNIVESHAM SUDOKU</h2>
+      <p>Solve the grid. Uncover the epics.</p>
     </div>
+    <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
+  </div>
 
-    <!-- Active Target Node Vector Array Grid Block Structure Mapping Element -->
-    <div id="levelGrid" class="level-grid" style="margin-top: 30px;"></div>
-
+  <!-- Level Grid Wrapper Box -->
+  <div class="grid-container-wrapper">
+    <div id="levelGrid" class="level-grid"></div>
   </div>
 
   <script type="module" src="progress.js"></script>
