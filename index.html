@@ -1,44 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sannivesham Sudoku</title>
-  <link rel="stylesheet" href="style.css">
+  <title>సుడోకు — సన్నివేశం</title>
+  <style>
+    :root {
+      --gold: #C9A24B;
+      --parchment: #EDE3C8;
+      --parchment-dim: rgba(237, 227, 200, 0.6);
+      --bg-dark: #0A0500;
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--parchment);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .header-container {
+      width: 100%;
+      max-width: 900px;
+      padding: 40px 20px 20px 20px;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+    }
+    .main-logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: var(--parchment);
+      font-weight: 500;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: var(--gold);
+      margin: 5px 0 30px 0;
+      letter-spacing: 2px;
+    }
+    .game-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+      margin-top: 20px;
+      border-bottom: 1px solid rgba(201, 162, 75, 0.2);
+      padding-bottom: 15px;
+    }
+    .game-title-section h2 {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    .game-title-section p {
+      margin: 5px 0 0 0;
+      color: var(--parchment-dim);
+    }
+    .back-link {
+      color: #4CB5C9;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: var(--gold);
+    }
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      width: 100%;
+      padding: 30px 20px;
+      box-sizing: border-box;
+    }
+    .level-card {
+      background: rgba(237, 227, 200, 0.02);
+      border: 1px solid rgba(201, 162, 75, 0.15);
+      border-radius: 8px;
+      padding: 20px;
+      text-decoration: none;
+      color: var(--parchment);
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+      display: block;
+      box-sizing: border-box;
+    }
+    .level-card:not(.locked):hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+    .level-card.locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .level-number {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .level-title {
+      font-size: 1.3rem;
+      margin-bottom: 2px;
+    }
+    .level-subtitle {
+      font-size: 0.9rem;
+      color: var(--parchment-dim);
+    }
+  </style>
 </head>
 <body>
 
-  <div class="wrap">
-
-    <!-- Cinematic Branded Hero Section -->
-    <div class="sannivesham-hero">
-      <div class="hero-logo-wrapper">
-        <!-- Render real logo image asset inside the glowing circular frame -->
-        <div class="hero-emblem">
-          <img src="logo.png" alt="Sannivesham Logo" class="emblem-img">
-        </div>
-      </div>
-      
-      <h1 class="main-brand-title">సన్నివేశం</h1>
-      <p class="main-brand-tagline">సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
-    </div>
-
-    <!-- Elegant Section Separator -->
-    <header class="site-header">
-      <div>
-        <h2>Sannivesham Sudoku</h2>
-        <p class="subtitle">Solve the grid. Uncover the epics.</p>
-      </div>
-      <a class="back-link" href="../index.html">&larr; Back to main site</a>
-    </header>
-
-    <!-- Dynamic Level Grid Content -->
-    <div id="levelGrid" class="level-grid"></div>
-
+  <div class="header-container">
+    <img src="https://sannivesham.com/images/logo.png" class="main-logo" alt="Logo">
+    <h1>సన్నివేశం</h1>
+    <div class="tagline">సంస్కృతి • సంప్రదాయం • సంభాషణ</div>
   </div>
 
-  <script src="levels.js"></script>
-<script type="module" src="progress.js"></script>
-  <script src="level-select.js"></script>
+  <div class="game-meta-row">
+    <div class="game-title-section">
+      <h2>SANNIVESHAM SUDOKU</h2>
+      <p>Solve the grid. Uncover the epics.</p>
+    </div>
+    <!-- FIXED TARGET WORKING REDIRECT DOMAIN -->
+    <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
+  </div>
+
+  <div id="levelGrid" class="grid-layout"></div>
+
+  <script type="module" src="progress.js"></script>
+  <script type="module" src="level-select.js"></script>
+
 </body>
 </html>
