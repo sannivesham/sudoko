@@ -6,7 +6,6 @@
   <title>సుడోకు — సంస్కృతి • సంప్రదాయం • సంభాషణ</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Prevent the brand container from breaking layout rules */
     .top-brand {
       display: flex;
       align-items: center;
@@ -16,7 +15,6 @@
       margin-bottom: 40px;
     }
     
-    /* Hard-lock the logo size so it can NEVER blow up */
     .top-brand .logo-image {
       width: 90px !important;
       height: 90px !important;
@@ -71,16 +69,15 @@
 
   <div class="home-bg"></div>
 
-  <!-- Header Section directly matching your main site branding -->
   <div class="top-brand">
-    <img src="images/logo.png" alt="Sannivesham Logo" class="logo-image">
+    <!-- FIXED: Using absolute domain link to load your premium site logo -->
+    <img src="https://sannivesham.com/images/logo.png" alt="Sannivesham Logo" class="logo-image">
     <div class="brand-text">
       <h1>సన్నివేశం</h1>
       <p>సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
     </div>
   </div>
 
-  <!-- Game Details and Navigation Row -->
   <div class="game-meta-row">
     <div class="game-title-section">
       <h2>SANNIVESHAM SUDOKU</h2>
@@ -89,7 +86,6 @@
     <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
   </div>
 
-  <!-- Level Grid Wrapper Box -->
   <div class="grid-container-wrapper">
     <div id="levelGrid" class="level-grid"></div>
   </div>
