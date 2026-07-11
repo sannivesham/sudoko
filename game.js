@@ -211,6 +211,8 @@
 
     buildPalette();
     refreshHighlights();
+    
+    // Check win condition IMMEDIATELY after placement state updates
     checkWin();
   }
 
@@ -220,8 +222,15 @@
         if (playerGrid[r][c] !== solution[r][c]) return;
       }
     }
+    
+    // Win confirmed!
     solved = true;
+    selected = null;
     clearInterval(timerHandle);
+
+    // Clear selection highlights visually
+    const cells = gridEl.querySelectorAll(".cell");
+    cells.forEach(cell => cell.classList.remove("selected", "same-value"));
 
     if (window.Progress && typeof window.Progress.recordCompletion === "function") {
       window.Progress.recordCompletion(level.id, seconds);
@@ -279,7 +288,7 @@
   document.getElementById("resetBtn").addEventListener("click", resetPuzzle);
 
   document.addEventListener("keydown", (e) => {
-    if (!selected) return;
+    if (!selected || solved) return;
     if (e.key >= "1" && e.key <= String(size)) {
       placeValue(Number(e.key));
     } else if (e.key === "Backspace" || e.key === "Delete") {
