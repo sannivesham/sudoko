@@ -4,49 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>సుడోకు — సన్నివేశం</title>
+  <!-- Link back to your master cascading style sheets to load the custom background -->
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --gold: #C9A24B;
-      --parchment: #EDE3C8;
-      --parchment-dim: rgba(237, 227, 200, 0.6);
-      --bg-dark: #0A0500;
-    }
-    body {
-      background-color: var(--bg-dark);
-      color: var(--parchment);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .header-container {
-      width: 100%;
-      max-width: 900px;
-      padding: 40px 20px 20px 20px;
-      box-sizing: border-box;
-      text-align: center;
-      position: relative;
-    }
-    .main-logo {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 15px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin: 0;
-      color: var(--parchment);
-      font-weight: 500;
-    }
-    .tagline {
-      font-size: 1rem;
-      color: var(--gold);
-      margin: 5px 0 30px 0;
-      letter-spacing: 2px;
-    }
+    /* Premium visual overrides keeping level selectors clean */
     .game-meta-row {
       display: flex;
       justify-content: space-between;
@@ -63,6 +24,7 @@
       color: var(--gold);
       font-size: 1.8rem;
       margin: 0;
+      font-family: 'Cinzel', serif;
     }
     .game-title-section p {
       margin: 5px 0 0 0;
@@ -103,7 +65,7 @@
       border-color: var(--gold);
     }
     .level-card.locked {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
     }
     .level-number {
@@ -124,10 +86,13 @@
 </head>
 <body>
 
-  <div class="header-container">
-    <img src="https://sannivesham.com/images/logo.png" class="main-logo" alt="Logo">
-    <h1>సన్నివేశం</h1>
-    <div class="tagline">సంస్కృతి • సంప్రదాయం • సంభాషణ</div>
+  <!-- Background overlay engine element placeholder -->
+  <div class="home-bg"></div>
+
+  <div class="header-container" style="text-align: center; padding: 40px 20px 20px 20px;">
+    <img src="https://sannivesham.com/images/logo.png" class="logo-image" alt="Logo" style="width: 100px; height: 100px; margin-bottom: 15px;">
+    <h1 style="font-size: 2.5rem; margin: 0; font-family: 'Cinzel', serif;">సన్నివేశం</h1>
+    <p style="color: var(--gold); margin: 5px 0 30px 0; letter-spacing: 2px;">సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
   </div>
 
   <div class="game-meta-row">
@@ -135,7 +100,6 @@
       <h2>SANNIVESHAM SUDOKU</h2>
       <p>Solve the grid. Uncover the epics.</p>
     </div>
-    <!-- FIXED TARGET WORKING REDIRECT DOMAIN -->
     <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
   </div>
 
