@@ -1,119 +1,53 @@
 (function () {
-  // 1. Level Data bundled directly into the game script to fix module scope issues
+  // 1. Expanded Level dataset up to 12 Chapters with unique matrices
   const GAME_LEVELS = [
-    {
-      id: 1,
-      titleTelugu: "అయోధ్య ద్వారం",
-      titleEnglish: "Ayodhya's Gate",
-      size: 4,
-      difficulty: "easy",
-      initial: [
-        [1, 0, 3, 0],
-        [0, 0, 0, 4],
-        [4, 0, 0, 0],
-        [0, 2, 0, 3]
-      ],
-      solution: [
-        [1, 4, 3, 2],
-        [2, 3, 1, 4],
-        [4, 1, 2, 3],
-        [3, 2, 4, 1]
-      ]
+    { id: 1, titleTelugu: "అయోధ్య ద్వారం", titleEnglish: "Ayodhya's Gate", size: 4, difficulty: "Easy",
+      initial: [[1, 0, 3, 0], [0, 0, 0, 4], [4, 0, 0, 0], [0, 2, 0, 3]],
+      solution: [[1, 4, 3, 2], [2, 3, 1, 4], [4, 1, 2, 3], [3, 2, 4, 1]]
     },
-    {
-      id: 2,
-      titleTelugu: "पंचవటి వనం",
-      titleEnglish: "Panchavati Grove",
-      size: 4,
-      difficulty: "medium",
-      initial: [
-        [0, 2, 0, 0],
-        [0, 0, 4, 0],
-        [0, 4, 0, 0],
-        [0, 0, 1, 0]
-      ],
-      solution: [
-        [4, 2, 3, 1],
-        [1, 3, 4, 2],
-        [3, 4, 2, 1],
-        [2, 1, 4, 3]
-      ]
+    { id: 2, titleTelugu: "పంచవటి వనం", titleEnglish: "Panchavati Grove", size: 4, difficulty: "Medium",
+      initial: [[0, 2, 0, 0], [0, 0, 4, 0], [0, 4, 0, 0], [0, 0, 1, 0]],
+      solution: [[4, 2, 3, 1], [1, 3, 4, 2], [3, 4, 2, 1], [2, 1, 4, 3]]
     },
-    {
-      id: 3,
-      titleTelugu: "చిత్రకూట ఆశ్రమం",
-      titleEnglish: "Chitrakoot Hermitage",
-      size: 4,
-      difficulty: "hard",
-      initial: [
-        [0, 0, 0, 1],
-        [0, 2, 0, 0],
-        [0, 0, 3, 0],
-        [4, 0, 0, 0]
-      ],
-      solution: [
-        [3, 4, 2, 1],
-        [1, 2, 4, 3],
-        [2, 1, 3, 4],
-        [4, 3, 1, 2]
-      ]
+    { id: 3, titleTelugu: "చిత్రకూట ఆశ్రమం", titleEnglish: "Chitrakoot Hermitage", size: 4, difficulty: "Hard",
+      initial: [[0, 0, 0, 1], [0, 2, 0, 0], [0, 0, 3, 0], [4, 0, 0, 0]],
+      solution: [[3, 4, 2, 1], [1, 2, 4, 3], [2, 1, 3, 4], [4, 3, 1, 2]]
     },
-    {
-      id: 4,
-      titleTelugu: "కిష్కింధ సభ",
-      titleEnglish: "Kishkindha Court",
-      size: 4,
-      difficulty: "easy",
-      initial: [
-        [0, 3, 4, 0],
-        [4, 0, 0, 2],
-        [1, 0, 0, 4],
-        [0, 4, 2, 0]
-      ],
-      solution: [
-        [2, 3, 4, 1],
-        [4, 1, 3, 2],
-        [1, 2, 3, 4],
-        [3, 4, 2, 1]
-      ]
+    { id: 4, titleTelugu: "కిష్కింధ సభ", titleEnglish: "Kishkindha Court", size: 4, difficulty: "Easy",
+      initial: [[0, 3, 4, 0], [4, 0, 0, 2], [1, 0, 0, 4], [0, 4, 2, 0]],
+      solution: [[2, 3, 4, 1], [4, 1, 3, 2], [1, 2, 3, 4], [3, 4, 2, 1]]
     },
-    {
-      id: 5,
-      titleTelugu: "లంకా ప్రాకారం",
-      titleEnglish: "Lanka's Ramparts",
-      size: 4,
-      difficulty: "medium",
-      initial: [
-        [0, 0, 1, 0],
-        [4, 0, 0, 3],
-        [3, 0, 0, 2],
-        [0, 1, 0, 0]
-      ],
-      solution: [
-        [2, 3, 1, 4],
-        [4, 1, 2, 3],
-        [3, 4, 1, 2],
-        [1, 2, 4, 3]
-      ]
+    { id: 5, titleTelugu: "లంకా ప్రాకారం", titleEnglish: "Lanka's Ramparts", size: 4, difficulty: "Medium",
+      initial: [[0, 0, 1, 0], [4, 0, 0, 3], [3, 0, 0, 2], [0, 1, 0, 0]],
+      solution: [[2, 3, 1, 4], [4, 1, 2, 3], [3, 4, 1, 2], [1, 2, 4, 3]]
     },
-    {
-      id: 6,
-      titleTelugu: "అశోక వనం",
-      titleEnglish: "Ashoka Vatika",
-      size: 4,
-      difficulty: "hard",
-      initial: [
-        [1, 0, 0, 4],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [3, 0, 0, 2]
-      ],
-      solution: [
-        [1, 2, 3, 4],
-        [4, 3, 2, 1],
-        [2, 1, 4, 3],
-        [3, 4, 1, 2]
-      ]
+    { id: 6, titleTelugu: "అశోక వనం", titleEnglish: "Ashoka Vatika", size: 4, difficulty: "Hard",
+      initial: [[1, 0, 0, 4], [0, 0, 0, 0], [0, 0, 0, 0], [3, 0, 0, 2]],
+      solution: [[1, 2, 3, 4], [4, 3, 2, 1], [2, 1, 4, 3], [3, 4, 1, 2]]
+    },
+    { id: 7, titleTelugu: "శబరి కుటీరం", titleEnglish: "Sabari's Cottage", size: 4, difficulty: "Easy",
+      initial: [[0, 4, 2, 0], [2, 0, 0, 3], [3, 0, 0, 4], [0, 2, 1, 0]],
+      solution: [[1, 4, 2, 3], [2, 7, 4, 3], [3, 1, 2, 4], [4, 2, 1, 3]]
+    },
+    { id: 8, titleTelugu: "ఋశ్యమూక పర్వతం", titleEnglish: "Rishyamuka Hill", size: 4, difficulty: "Medium",
+      initial: [[4, 0, 0, 1], [0, 1, 2, 0], [0, 4, 1, 0], [1, 0, 0, 2]],
+      solution: [[4, 2, 3, 1], [3, 1, 2, 4], [2, 4, 1, 3], [1, 3, 4, 2]]
+    },
+    { id: 9, titleTelugu: "దండకారణ్యం", titleEnglish: "Dandaka Forest", size: 4, difficulty: "Hard",
+      initial: [[0, 0, 4, 0], [4, 0, 0, 2], [2, 0, 0, 4], [0, 4, 0, 0]],
+      solution: [[3, 2, 4, 1], [4, 1, 3, 2], [2, 3, 1, 4], [1, 4, 2, 3]]
+    },
+    { id: 10, titleTelugu: "మిథిలా నగరం", titleEnglish: "Mithila Kingdom", size: 4, difficulty: "Easy",
+      initial: [[2, 0, 0, 4], [0, 4, 2, 0], [0, 2, 4, 0], [4, 0, 0, 2]],
+      solution: [[2, 1, 3, 4], [3, 4, 2, 1], [1, 2, 4, 3], [4, 3, 1, 2]]
+    },
+    { id: 11, titleTelugu: "క్షీర సాగరం", titleEnglish: "Cosmic Ocean", size: 4, difficulty: "Medium",
+      initial: [[0, 3, 0, 2], [2, 0, 3, 0], [0, 2, 0, 3], [3, 0, 2, 0]],
+      solution: [[4, 3, 1, 2], [2, 1, 3, 4], [1, 2, 4, 3], [3, 4, 2, 1]]
+    },
+    { id: 12, titleTelugu: "శ్రీరామ సామ్రాజ్యం", titleEnglish: "Rama's Empire", size: 4, difficulty: "Hard",
+      initial: [[1, 0, 0, 0], [0, 2, 0, 0], [0, 0, 3, 0], [0, 0, 0, 4]],
+      solution: [[1, 3, 4, 2], [4, 2, 1, 3], [2, 4, 3, 1], [3, 1, 2, 4]]
     }
   ];
 
@@ -130,21 +64,10 @@
     return;
   }
 
-  // Safe verification layer for Module environment checking
-  const progressInstance = window.Progress || { 
-    isUnlocked: (id) => id === 1, 
-    recordCompletion: () => console.log("Fallback storage local execution fallback placeholder") 
-  };
-
-  if (typeof progressInstance.isUnlocked === "function" && !progressInstance.isUnlocked(levelId)) {
-    window.location.href = "index.html";
-    return;
-  }
-
   const size = level.size;
   const puzzle = level.initial;
   const solution = level.solution;
-  const br = 2, bc = 2; // Fixed standard dimension ratios for 4x4 matrix frames
+  const br = 2, bc = 2; 
 
   const playerGrid = puzzle.map(row => row.slice());
   const givenMask = puzzle.map(row => row.map(v => v !== 0));
@@ -155,7 +78,7 @@
   let timerHandle = null;
   let solved = false;
 
-  document.getElementById("levelTitle").textContent = `Level ${level.id}: ${level.titleTelugu}`;
+  document.getElementById("levelTitle").textContent = `లెవెల్ ${level.id}: ${level.titleTelugu}`;
   document.getElementById("levelSubtitle").textContent = `${size}×${size} · ${level.titleEnglish}`;
 
   const gridEl = document.getElementById("grid");
@@ -288,8 +211,8 @@
     solved = true;
     clearInterval(timerHandle);
 
-    if (typeof progressInstance.recordCompletion === "function") {
-      progressInstance.recordCompletion(level.id, seconds);
+    if (window.Progress && typeof window.Progress.recordCompletion === "function") {
+      window.Progress.recordCompletion(level.id, seconds);
     }
 
     document.getElementById("winTime").textContent = `Solved in ${formatTime(seconds)} with ${mistakes} mistakes.`;
