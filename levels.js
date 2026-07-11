@@ -1,5 +1,5 @@
-// Sudoku Level Definitions with Bilingual Titles
-const LEVELS = [
+// Sudoku Level Definitions attached globally for Module support
+window.LEVELS = [
   {
     id: 1,
     titleTelugu: "అయోధ్య ద్వారం",
@@ -72,7 +72,7 @@ const LEVELS = [
     solution: [
       [2, 3, 4, 1],
       [4, 1, 3, 2],
-      [1, 2, 5, 4], // Adaptive size handling
+      [1, 2, 3, 4],
       [3, 4, 2, 1]
     ]
   },
@@ -91,7 +91,7 @@ const LEVELS = [
     solution: [
       [2, 3, 1, 4],
       [4, 1, 2, 3],
-      [3, 4, 5, 2],
+      [3, 4, 1, 2],
       [1, 2, 4, 3]
     ]
   },
@@ -116,6 +116,6 @@ const LEVELS = [
   }
 ];
 
-function getLevel(id) {
-  return LEVELS.find(l => l.id === Number(id));
-}
+window.getLevel = function(id) {
+  return window.LEVELS.find(l => l.id === Number(id));
+};
