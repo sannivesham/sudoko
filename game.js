@@ -1,51 +1,63 @@
 (function () {
-  // 1. Expanded Level dataset up to 12 Chapters with unique matrices
+  // Cultural Symbol Mapping Configuration for the board display
+  const SYMBOLS = {
+    1: { icon: "🕉️", name: "Om" },
+    2: { icon: "🔱", name: "Trishul" },
+    3: { icon: "🪔", name: "Diya" },
+    4: { icon: "🌸", name: "Lotus" }
+  };
+
+  function symbolIcon(val) {
+    return SYMBOLS[val] ? `<span style="font-size: 1.8rem;">${SYMBOLS[val].icon}</span>` : "";
+  }
+
+  // Expanded Level dataset up to 12 Chapters with unique matrices
   const GAME_LEVELS = [
-    { id: 1, titleTelugu: "అయోధ్య ద్వారం", titleEnglish: "Ayodhya's Gate", size: 4, difficulty: "Easy",
+    { id: 1, titleTelugu: "అయోధ్య ద్వారం", titleEnglish: "Ayodhya's Gate", size: 4, difficulty: "easy",
       initial: [[1, 0, 3, 0], [0, 0, 0, 4], [4, 0, 0, 0], [0, 2, 0, 3]],
       solution: [[1, 4, 3, 2], [2, 3, 1, 4], [4, 1, 2, 3], [3, 2, 4, 1]]
     },
-    { id: 2, titleTelugu: "పంచవటి వనం", titleEnglish: "Panchavati Grove", size: 4, difficulty: "Medium",
+    { id: 2, titleTelugu: "పంచవటి వనం", titleEnglish: "Panchavati Grove", size: 4, difficulty: "medium",
       initial: [[0, 2, 0, 0], [0, 0, 4, 0], [0, 4, 0, 0], [0, 0, 1, 0]],
       solution: [[4, 2, 3, 1], [1, 3, 4, 2], [3, 4, 2, 1], [2, 1, 4, 3]]
     },
-    { id: 3, titleTelugu: "చిత్రకూట ఆశ్రమం", titleEnglish: "Chitrakoot Hermitage", size: 4, difficulty: "Hard",
+    { id: 3, titleTelugu: "చిత్రకూట ఆశ్రమం", titleEnglish: "Chitrakoot Hermitage", size: 4, difficulty: "hard",
       initial: [[0, 0, 0, 1], [0, 2, 0, 0], [0, 0, 3, 0], [4, 0, 0, 0]],
       solution: [[3, 4, 2, 1], [1, 2, 4, 3], [2, 1, 3, 4], [4, 3, 1, 2]]
     },
-    { id: 4, titleTelugu: "కిష్కింధ సభ", titleEnglish: "Kishkindha Court", size: 4, difficulty: "Easy",
+    { id: 4, titleTelugu: "కిష్కింధ సభ", titleEnglish: "Kishkindha Court", size: 4, difficulty: "easy",
       initial: [[0, 3, 4, 0], [4, 0, 0, 2], [1, 0, 0, 4], [0, 4, 2, 0]],
       solution: [[2, 3, 4, 1], [4, 1, 3, 2], [1, 2, 3, 4], [3, 4, 2, 1]]
     },
-    { id: 5, titleTelugu: "లంకా ప్రాకారం", titleEnglish: "Lanka's Ramparts", size: 4, difficulty: "Medium",
+    { id: 5, titleTelugu: "లంకా ప్రాకారం", titleEnglish: "Lanka's Ramparts", size: 4, difficulty: "medium",
       initial: [[0, 0, 1, 0], [4, 0, 0, 3], [3, 0, 0, 2], [0, 1, 0, 0]],
       solution: [[2, 3, 1, 4], [4, 1, 2, 3], [3, 4, 1, 2], [1, 2, 4, 3]]
     },
-    { id: 6, titleTelugu: "అశోక వనం", titleEnglish: "Ashoka Vatika", size: 4, difficulty: "Hard",
+    { id: 6, titleTelugu: "అశోక వనం", titleEnglish: "Ashoka Vatika", size: 4, difficulty: "hard",
       initial: [[1, 0, 0, 4], [0, 0, 0, 0], [0, 0, 0, 0], [3, 0, 0, 2]],
       solution: [[1, 2, 3, 4], [4, 3, 2, 1], [2, 1, 4, 3], [3, 4, 1, 2]]
     },
-    { id: 7, titleTelugu: "శబరి కుటీరం", titleEnglish: "Sabari's Cottage", size: 4, difficulty: "Easy",
+    { id: 7, titleTelugu: "శబరి కుటీరం", titleEnglish: "Sabari's Cottage", size: 4, difficulty: "easy",
       initial: [[0, 4, 2, 0], [2, 0, 0, 3], [3, 0, 0, 4], [0, 2, 1, 0]],
-      solution: [[1, 4, 2, 3], [2, 7, 4, 3], [3, 1, 2, 4], [4, 2, 1, 3]]
+      solution: [[1, 4, 2, 3], [2, 1, 4, 3], [3, 1, 2, 4], [4, 2, 1, 3]]
     },
-    { id: 8, titleTelugu: "ఋశ్యమూక పర్వతం", titleEnglish: "Rishyamuka Hill", size: 4, difficulty: "Medium",
+    { id: 8, titleTelugu: "ఋశ్యమూక పర్వతం", titleEnglish: "Rishyamuka Hill", size: 4, difficulty: "medium",
       initial: [[4, 0, 0, 1], [0, 1, 2, 0], [0, 4, 1, 0], [1, 0, 0, 2]],
       solution: [[4, 2, 3, 1], [3, 1, 2, 4], [2, 4, 1, 3], [1, 3, 4, 2]]
     },
-    { id: 9, titleTelugu: "దండకారణ్యం", titleEnglish: "Dandaka Forest", size: 4, difficulty: "Hard",
+    { id: 9, titleTelugu: "దండకారణ్యం", titleEnglish: "Dandaka Forest", size: 4, difficulty: "hard",
       initial: [[0, 0, 4, 0], [4, 0, 0, 2], [2, 0, 0, 4], [0, 4, 0, 0]],
       solution: [[3, 2, 4, 1], [4, 1, 3, 2], [2, 3, 1, 4], [1, 4, 2, 3]]
     },
-    { id: 10, titleTelugu: "మిథిలా నగరం", titleEnglish: "Mithila Kingdom", size: 4, difficulty: "Easy",
+    { id: 10, titleTelugu: "మిథిలా నగరం", titleEnglish: "Mithila Kingdom", size: 4, difficulty: "easy",
       initial: [[2, 0, 0, 4], [0, 4, 2, 0], [0, 2, 4, 0], [4, 0, 0, 2]],
       solution: [[2, 1, 3, 4], [3, 4, 2, 1], [1, 2, 4, 3], [4, 3, 1, 2]]
     },
-    { id: 11, titleTelugu: "క్షీర సాగరం", titleEnglish: "Cosmic Ocean", size: 4, difficulty: "Medium",
+    { id: 11, titleTelugu: "క్షీర సాగరం", titleEnglish: "Cosmic Ocean", size: 4, difficulty: "medium",
       initial: [[0, 3, 0, 2], [2, 0, 3, 0], [0, 2, 0, 3], [3, 0, 2, 0]],
       solution: [[4, 3, 1, 2], [2, 1, 3, 4], [1, 2, 4, 3], [3, 4, 2, 1]]
     },
-    { id: 12, titleTelugu: "శ్రీరామ సామ్రాజ్యం", titleEnglish: "Rama's Empire", size: 4, difficulty: "Hard",
+    { id: 12, titleTelugu: "శ్రీరామ సామ్రాజ్యం", titleEnglish: "Rama's Empire", size: 4, difficulty: "hard",
       initial: [[1, 0, 0, 0], [0, 2, 0, 0], [0, 0, 3, 0], [0, 0, 0, 4]],
       solution: [[1, 3, 4, 2], [4, 2, 1, 3], [2, 4, 3, 1], [3, 1, 2, 4]]
     }
@@ -122,7 +134,7 @@
 
   function renderCellContent(cell, r, c) {
     const val = playerGrid[r][c];
-    cell.innerHTML = val ? val : "";
+    cell.innerHTML = val ? symbolIcon(val) : "";
   }
 
   function buildPalette() {
@@ -146,7 +158,7 @@
 
       const btn = document.createElement("button");
       btn.className = "palette-btn";
-      btn.innerHTML = n;
+      btn.innerHTML = SYMBOLS[n] ? SYMBOLS[n].icon : n;
       btn.addEventListener("click", () => placeValue(n));
       paletteEl.appendChild(btn);
     }
