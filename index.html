@@ -3,116 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>సుడోకు — సంస్కృతి • సంప్రదాయం • సంభాషణ</title>
+  <title>సన్నివేశం — సుడోకు (Sudoku)</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Clean layout rules matching the Sannivesham theme perfectly */
-    .sannivesham-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      margin: 40px auto 30px auto;
-      max-width: 900px;
-      padding: 0 20px;
-    }
-    
-    .sannivesham-header img {
-      width: 90px !important;
-      height: 90px !important;
-      min-width: 90px !important;
-      object-fit: contain !important;
-    }
-
-    .sannivesham-header .text-block h1 {
-      margin: 0 !important;
-      font-size: 2.5rem !important;
-      font-family: 'Cinzel', serif !important;
-      color: #EDE3C8 !important;
-      font-weight: 500 !important;
-      line-height: 1.2 !important;
-    }
-
-    .sannivesham-header .text-block p {
-      margin: 4px 0 0 0 !important;
-      color: #C9A24B !important;
-      font-size: 0.95rem !important;
-      letter-spacing: 2px !important;
-    }
-
-    .game-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto 20px auto;
-      padding: 0 20px 15px 20px;
-      box-sizing: border-box;
-      border-bottom: 1px solid rgba(201, 162, 75, 0.2);
-    }
-
-    .game-title-section h2 {
-      color: #C9A24B;
-      font-size: 1.8rem;
-      margin: 0;
-      font-family: 'Cinzel', serif;
-    }
-
-    .game-title-section p {
-      margin: 5px 0 0 0;
-      color: rgba(237, 227, 200, 0.6);
-    }
-
-    .back-link {
-      color: #4CB5C9;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.2s;
-      padding-bottom: 4px;
-    }
-
-    .back-link:hover {
-      color: #C9A24B;
-    }
-
-    .grid-container-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px 40px 20px;
-      box-sizing: border-box;
-    }
-  </style>
 </head>
 <body>
 
-  <div class="home-bg"></div>
+  <div class="wrap">
 
-  <!-- Isolated Brand Header Structure -->
-  <div class="sannivesham-header">
-    <img src="https://sannivesham.com/images/logo.png" alt="Sannivesham Logo">
-    <div class="text-block">
-      <h1>సన్నివేశం</h1>
-      <p>సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
+    <!-- Cinematic Branded Hero Section -->
+    <div class="sannivesham-hero">
+      <div class="hero-logo-wrapper">
+        <div class="hero-emblem">
+          <!-- Pulls the logo directly from your main asset framework -->
+          <img src="https://sannivesham.com/images/logo.png" alt="Sannivesham Logo" class="emblem-img">
+        </div>
+      </div>
+      
+      <h1 class="main-brand-title">సన్నివేశం</h1>
+      <p class="main-brand-tagline">సంస్కృతి • సంప్రదాయం • సంభాషణ</p>
     </div>
-  </div>
 
-  <!-- Game Details and Navigation Row -->
-  <div class="game-meta-row">
-    <div class="game-title-section">
-      <h2>SANNIVESHAM SUDOKU</h2>
-      <p>Solve the grid. Uncover the epics.</p>
-    </div>
-    <a href="https://sannivesham.com" class="back-link">← Back to main site</a>
-  </div>
+    <!-- Game Section Header -->
+    <header class="site-header" style="position: relative;">
+      <div>
+        <h2>సుడోకు (Sudoku)</h2>
+        <p class="subtitle">గడులను పూరించండి. ఇతిహాసాలను ఆవిష్కరించండి.</p>
+      </div>
+      <!-- Fixed link back to your core home platform -->
+      <a href="https://sannivesham.com" class="back-link" style="position: absolute; right: 0; bottom: 12px; color: #4CB5C9; text-decoration: none; font-size: 0.95rem;">← Back to main site</a>
+    </header>
 
-  <!-- Level Grid Wrapper Box -->
-  <div class="grid-container-wrapper">
+    <!-- Dynamic Level Selection Grid Container -->
     <div id="levelGrid" class="level-grid"></div>
+
   </div>
 
+  <!-- Game Scripts Layer -->
   <script type="module" src="progress.js"></script>
   <script type="module" src="level-select.js"></script>
-
 </body>
 </html>
