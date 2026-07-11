@@ -1,24 +1,119 @@
-// Level definitions. 
+// Sudoku Level Definitions with Bilingual Titles
 const LEVELS = [
-  // 4x4 Grids (Ayodhya & Aranya Kanda)
-  { id: 1, title: "Ayodhya's Gate",     size: 4, difficulty: "easy",   symbolCount: 4 },
-  { id: 2, title: "Panchavati Grove",   size: 4, difficulty: "medium", symbolCount: 4 },
-  { id: 3, title: "Chitrakoot Hermitage",size: 4, difficulty: "hard",   symbolCount: 4 },
-
-  // 6x6 Grids (Kishkindha & Sundara Kanda)
-  { id: 4, title: "Kishkindha Court",   size: 6, difficulty: "easy",   symbolCount: 6 },
-  { id: 5, title: "Lanka's Ramparts",   size: 6, difficulty: "medium", symbolCount: 6 },
-  { id: 6, title: "Ashoka Vatika",      size: 6, difficulty: "hard",   symbolCount: 6 },
-
-  // 9x9 Grids (Mahabharata - Early Chapters)
-  { id: 7, title: "Indraprastha Hall",  size: 9, difficulty: "easy",   symbolCount: 9 },
-  { id: 8, title: "Hastinapur Court",   size: 9, difficulty: "medium", symbolCount: 9 },
-  { id: 9, title: "Kamyaka Forest",     size: 9, difficulty: "medium", symbolCount: 9 },
-
-  // 9x9 Grids (Mahabharata - The War)
-  { id: 10, title: "Kurukshetra Field", size: 9, difficulty: "hard",   symbolCount: 9 },
-  { id: 11, title: "Bhishma's Bed",     size: 9, difficulty: "hard",   symbolCount: 9 },
-  { id: 12, title: "Yudhishthira's Crown",size: 9, difficulty: "hard", symbolCount: 9 },
+  {
+    id: 1,
+    titleTelugu: "అయోధ్య ద్వారం",
+    titleEnglish: "Ayodhya's Gate",
+    size: 4,
+    difficulty: "easy",
+    initial: [
+      [1, 0, 3, 0],
+      [0, 0, 0, 4],
+      [4, 0, 0, 0],
+      [0, 2, 0, 3]
+    ],
+    solution: [
+      [1, 4, 3, 2],
+      [2, 3, 1, 4],
+      [4, 1, 2, 3],
+      [3, 2, 4, 1]
+    ]
+  },
+  {
+    id: 2,
+    titleTelugu: "పంచవటి వనం",
+    titleEnglish: "Panchavati Grove",
+    size: 4,
+    difficulty: "medium",
+    initial: [
+      [0, 2, 0, 0],
+      [0, 0, 4, 0],
+      [0, 4, 0, 0],
+      [0, 0, 1, 0]
+    ],
+    solution: [
+      [4, 2, 3, 1],
+      [1, 3, 4, 2],
+      [3, 4, 2, 1],
+      [2, 1, 4, 3]
+    ]
+  },
+  {
+    id: 3,
+    titleTelugu: "చిత్రకూట ఆశ్రమం",
+    titleEnglish: "Chitrakoot Hermitage",
+    size: 4,
+    difficulty: "hard",
+    initial: [
+      [0, 0, 0, 1],
+      [0, 2, 0, 0],
+      [0, 0, 3, 0],
+      [4, 0, 0, 0]
+    ],
+    solution: [
+      [3, 4, 2, 1],
+      [1, 2, 4, 3],
+      [2, 1, 3, 4],
+      [4, 3, 1, 2]
+    ]
+  },
+  {
+    id: 4,
+    titleTelugu: "కిష్కింధ సభ",
+    titleEnglish: "Kishkindha Court",
+    size: 4,
+    difficulty: "easy",
+    initial: [
+      [0, 3, 4, 0],
+      [4, 0, 0, 2],
+      [1, 0, 0, 4],
+      [0, 4, 2, 0]
+    ],
+    solution: [
+      [2, 3, 4, 1],
+      [4, 1, 3, 2],
+      [1, 2, 5, 4], // Adaptive size handling
+      [3, 4, 2, 1]
+    ]
+  },
+  {
+    id: 5,
+    titleTelugu: "లంకా ప్రాకారం",
+    titleEnglish: "Lanka's Ramparts",
+    size: 4,
+    difficulty: "medium",
+    initial: [
+      [0, 0, 1, 0],
+      [4, 0, 0, 3],
+      [3, 0, 0, 2],
+      [0, 1, 0, 0]
+    ],
+    solution: [
+      [2, 3, 1, 4],
+      [4, 1, 2, 3],
+      [3, 4, 5, 2],
+      [1, 2, 4, 3]
+    ]
+  },
+  {
+    id: 6,
+    titleTelugu: "అశోక వనం",
+    titleEnglish: "Ashoka Vatika",
+    size: 4,
+    difficulty: "hard",
+    initial: [
+      [1, 0, 0, 4],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [3, 0, 0, 2]
+    ],
+    solution: [
+      [1, 2, 3, 4],
+      [4, 3, 2, 1],
+      [2, 1, 4, 3],
+      [3, 4, 1, 2]
+    ]
+  }
 ];
 
 function getLevel(id) {
