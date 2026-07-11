@@ -1,58 +1,46 @@
 (function () {
-  // Safe helper execution initialization loop
+  // 1. Level Data built directly into the script to prevent timing errors
+  const MODULE_LEVELS = [
+    { id: 1, titleTelugu: "అయోధ్య ద్వారం", titleEnglish: "Ayodhya's Gate", size: 4, difficulty: "Easy" },
+    { id: 2, titleTelugu: "పంచవటి వనం", titleEnglish: "Panchavati Grove", size: 4, difficulty: "Medium" },
+    { id: 3, titleTelugu: "చిత్రకూట ఆశ్రమం", titleEnglish: "Chitrakoot Hermitage", size: 4, difficulty: "Hard" },
+    { id: 4, titleTelugu: "కిష్కింధ సభ", titleEnglish: "Kishkindha Court", size: 4, difficulty: "Easy" },
+    { id: 5, titleTelugu: "లంకా ప్రాకారం", titleEnglish: "Lanka's Ramparts", size: 4, difficulty: "Medium" },
+    { id: 6, titleTelugu: "అశోక వనం", titleEnglish: "Ashoka Vatika", size: 4, difficulty: "Hard" }
+  ];
+
   function renderGrid() {
     const gridEl = document.getElementById("levelGrid");
     if (!gridEl) return;
 
     gridEl.innerHTML = "";
-    
-    // Read clean global window arrays
-    const levelsArray = window.LEVELS || [];
 
-    if (levelsArray.length === 0) {
-      console.warn("Sannivesham levels configuration array data not detected yet.");
-      return;
-    }
-
-    levelsArray.forEach((level) => {
-      // Graceful checking fallback rules built safely for asynchronous state cycles
+    MODULE_LEVELS.forEach((level) => {
       const isUnlocked = typeof window.Progress?.isUnlocked === "function" 
         ? window.Progress.isUnlocked(level.id) 
         : (level.id === 1);
 
       const progress = typeof window.Progress?.getLevelProgress === "function"
         ? window.Progress.getLevelProgress(level.id)
-        : { completed: false, bestTime: null, bestMoves: null };
+        : { completed: false, bestTime: null };
 
       const card = document.createElement(isUnlocked ? "a" : "div");
       card.className = `level-card ${isUnlocked ? "" : "locked"}`;
       
       if (isUnlocked) {
-        // Adapt clean custom parameters dynamically matching respective folder systems
-        const path = window.location.pathname;
-        if (path.includes("Sliding-Puzzle")) {
-          card.href = `puzzle.html?level=${level.id}`;
-        } else {
-          card.href = `game.html?level=${level.id}`;
-        }
+        card.href = `game.html?level=${level.id}`;
       }
 
-      // Safe identification attributes check
-      const hasBilingual = level.titleTelugu && level.titleEnglish;
-      const displayTitle = hasBilingual ? level.titleTelugu : (level.title || "");
-      const extraSubtitle = hasBilingual ? `(${level.titleEnglish})` : `(${level.difficulty || "Easy"})`;
-
       let innerHTML = `
-        <div class="level-number">CHAPTER ${level.id}</div>
-        <div class="level-title" style="font-weight: 600; font-size: 1.35rem; margin-bottom: 2px;">${displayTitle}</div>
-        <div class="level-subtitle" style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); opacity: 0.85; margin-bottom: 12px;">${extraSubtitle}</div>
+        <div class="level-number">LEVEL ${level.id}</div>
+        <div class="level-title" style="font-weight: 600; font-size: 1.35rem; margin-bottom: 2px;">${level.titleTelugu}</div>
+        <div class="level-subtitle" style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); opacity: 0.85; margin-bottom: 12px;">(${level.titleEnglish})</div>
         <div class="level-meta" style="font-size: 0.85rem; opacity: 0.75;">
-          <span>Grid: ${level.gridSize || level.size || '3×3'}</span>
+          <span>Grid: ${level.size}×${level.size} · ${level.difficulty}</span>
       `;
 
-      if (progress.completed) {
-        const scoreShow = progress.bestTime || progress.bestMoves || "Done";
-        innerHTML += `<span> · ⭐ Best: ${scoreShow}</span>`;
+      if (progress.completed && progress.bestTime) {
+        innerHTML += `<span> · Best: ${progress.bestTime}</span>`;
       }
 
       innerHTML += `</div>`;
@@ -66,21 +54,6 @@
     });
   }
 
-  // 1. First immediate render try cycle
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-    setTimeout(renderGrid, 100);
-  } else {
-    window.addEventListener("DOMContentLoaded", renderGrid);
-  }
-
-  // 2. Secondary listener trigger keeping rendering perfect after asynchronous Firebase login verification checks finish
-  if (window.auth) {
-    window.auth.onAuthStateChanged(() => {
-      setTimeout(renderGrid, 500);
-    });
-  } else {
-    // Standard delay backup mapping safely if auth script sequence triggers early
-    setTimeout(renderGrid, 600);
-    setTimeout(renderGrid, 1500);
-  }
+  renderGrid();
+  setInterval(renderGrid, 500);
 })();
