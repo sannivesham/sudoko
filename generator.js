@@ -1,7 +1,7 @@
 // Mythology Sudoku — puzzle generator & solver
 // Supports 4x4 (2x2 boxes), 6x6 (2x3 boxes), 9x9 (3x3 boxes)
 
-const SudokuEngine = (() => {
+export const SudokuEngine = (() => {
 
   function boxDims(size) {
     if (size === 4) return { br: 2, bc: 2 };
